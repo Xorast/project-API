@@ -9,8 +9,19 @@
 <body>
     
     <p><strong>This is the first page</strong></p>
+    
     <p>This is the first data taken from the online database :</p>
-    <p> {{ req }}</p>
+    
+    {% for t in req %}
+        <ol>
+            <li>{{ t.text             }}</li>
+            <li>{{ t.likes            }}</li>
+            <li>{{ t.username         }}</li>
+            <li>{{ t.retweet_count    }}</li>
+            <li>{{ t.reply_count      }}</li>
+            <li>{{ t.retweeted        }}</li>
+        </ol>
+    {% endfor %}
     
 </body>
 </html>
