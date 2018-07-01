@@ -10,18 +10,33 @@
     
     <p><strong>This is the first page</strong></p>
     
-    <p>This is the first data taken from the online database :</p>
+    <p>TWEET - This is the first data taken from the online database :</p>
     
-    {% for t in req %}
+    {% for tweet in tweets %}
         <ol>
-            <li>{{ t.text             }}</li>
-            <li>{{ t.likes            }}</li>
-            <li>{{ t.username         }}</li>
-            <li>{{ t.retweet_count    }}</li>
-            <li>{{ t.reply_count      }}</li>
-            <li>{{ t.retweeted        }}</li>
+            <li>{{ tweet.text             }}</li>
+            <li>{{ tweet.likes            }}</li>
+            <li>{{ tweet.username         }}</li>
+            <li>{{ tweet.retweet_count    }}</li>
+            <li>{{ tweet.reply_count      }}</li>
+            <li>{{ tweet.retweeted        }}</li>
         </ol>
     {% endfor %}
+    
+    <p>NEWS - This is the first data taken from the online database :</p>
+    
+    {% for article in articles %}
+        <ol>
+            <li>{{ article.source.name      }}</li>
+            <li>{{ article.author           }}</li>
+            <li>{{ article.title            }}</li>
+            <li>{{ article.description      }}</li>
+            <li>{{ article.url              }}</li>
+            <li>{{ article.urlToImage       }}</li>
+            <li>{{ article.publishedAt      }}</li>
+        </ol>
+    {% endfor %}
+    
     
 </body>
 </html>
