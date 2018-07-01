@@ -2,6 +2,7 @@ import  os
 import  json
 import  requests
 from    flask       import Flask, render_template
+from    get_data    import get_news, get_tweets
 
 
 API_KEY_1   = os.environ.get("API_KEY_1")
@@ -15,35 +16,10 @@ app = Flask(__name__)
 @app.route('/')
 def get_index():
     
-    # --------------------------
-    url     = (API_NAME_2 + API_KEY_2)
+    articles  = get_news(API_NAME_2, API_KEY_2)
+    tweets    = get_tweets(API_NAME_1, API_KEY_1) 
     
-    r2       = requests.get(url)
-    r2       = r2.json()
-    
-    articles = r2["articles"]
-    print(r2["totalResults"])
-    
-    # --------------------------
-    
-    # --------------------------
-    r1              = requests.get(API_NAME_1 + API_KEY_1)
-    request_content = r1.json()
-    
-    tweets_array = []
-    
-    for tweet in request_content :
-        tweets_array.append({   "text"          : tweet['text'], 
-                                "likes"         : tweet['user']['favourites_count'],
-                                "username"      : tweet['user']['name'],
-                                "retweet_count" : tweet['retweet_count'],
-                                "reply_count"   : tweet['reply_count'],
-                                "retweeted"     : tweet['retweeted_status']['created_at'] if "retweeted_status" in tweet else "NO"
-                            })
-                
-    # -------------------------
-    
-    return render_template('index.html', tweets = tweets_array, articles = articles)
+    return render_template('index.html', tweets = tweets, articles = articles)
     
     
 # ------------------------------------------------------------------------------
