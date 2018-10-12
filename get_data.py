@@ -8,7 +8,7 @@ def get_news(API_NAME_2, API_KEY_2):
     response  = requests.get(API_NAME_2 + API_KEY_2)
     response  = response.json()
     
-    print(response["totalResults"])
+    # print(response["totalResults"])
     
     return  response["articles"]
     

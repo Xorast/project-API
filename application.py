@@ -11,6 +11,7 @@ API_NAME_1  = os.environ.get("API_NAME_1")
 API_KEY_2   = os.environ.get("API_KEY_2")
 API_NAME_2  = os.environ.get("API_NAME_2")
 
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -20,7 +21,12 @@ def get_index():
     tweets    = get_tweets(API_NAME_1, API_KEY_1) 
     
     return render_template('index.html', tweets = tweets, articles = articles)
+    # return render_template('index.html', tweets = tweets)
     
+@app.route('/major_breachs')
+def display_data():
+    # breachs data displayed with dc/crossfilter/d3
+    return render_template('index.html')
     
 # ------------------------------------------------------------------------------
 
