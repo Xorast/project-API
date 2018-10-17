@@ -20,7 +20,8 @@ def get_tweets(API_NAME_1, API_KEY_1):
     tweets_array = []
     
     for tweet in request_content :
-        tweets_array.append({   "text"          : tweet['text'], 
+        tweets_array.append({   "id"            : tweet['id'],
+                                "text"          : tweet['text'], 
                                 "likes"         : tweet['user']['favourites_count'],
                                 "username"      : tweet['user']['name'],
                                 "retweet_count" : tweet['retweet_count'],
