@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}
+    API - News & Trends
+{% endblock %}
+
+{% block content %}
+    
+    <!--<div class="row">-->
+        
+        <h1 class="mt-5 text-center">News & Trends API</h1>
+        <h3 class="mt-5 text-muted text-center">Check the lastest articles & tweets <br>
+        on the subject of your choice!</h3>
+        
+    <!--</div>-->
+    
+    <div class="row mt-5">
+        
+        <div class="col-sm-4 offset-sm-4">
+            <div class="form-group">
+                <fieldset>
+                    <label class="control-label text-center" for="searchBar">What do you want to know about today ?</label>
+                    <input class="form-control" id="searchBar" type="text" placeholder="keywords">
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    
+    <p>TWEET - This is the first data taken from the online database :</p>
+    
+    {% for tweet in tweets %}
+        <ol>
+            <li><strong>TWEET</strong>        {{ tweet.text             }}</li>
+            <li><strong>AUTHOR</strong>        {{ tweet.username         }}</li>
+            <li><strong></strong>        {{ tweet.retweet_count    }}</li>
+            <li><strong></strong>        {{ tweet.reply_count      }}</li>
+            <li><strong></strong>        {{ tweet.retweeted        }}</li>
+        </ol>
+    {% endfor %}
+    
+    <p>NEWS - This is the first data taken from the online database :</p>
+    
+    {% for article in articles %}
+        <ol>
+            <li>{{ article.source.name      }}</li>
+            <li>{{ article.author           }}</li>
+            <li>{{ article.title            }}</li>
+            <li>{{ article.description      }}</li>
+            <li>{{ article.url              }}</li>
+            <li>{{ article.urlToImage       }}</li>
+            <li>{{ article.publishedAt      }}</li>
+        </ol>
+    {% endfor %}
+    
+{% endblock %}
