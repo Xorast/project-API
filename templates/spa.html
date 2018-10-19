@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}
+    SPA
+{% endblock %}
+
+{% block content %}
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='js/spa.js') }}"></script>
+    
+    
+    <h3 class="my-5 text-center text-danger">[ONGOING DEVELOPMENT - RELEASE DATE: 26 OCT. 2018]</h3>
+    <h1 class="mt-5 text-center">NEWS API</h1>
+    <h3 class="my-5 text-muted text-center">SINGLE PAGE APPLICATION</h3>
+        
+    
+    <!-- SEARCHBAR -->
+    <div class="row my-5">
+        
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group text-center">
+                <!--<form id="searchForm">-->
+                    
+                    <label class="control-label text-center" for="searchbar">What do topics do you want to check today ? <br> Get articles from newspapers around the world !</label>
+                    <input class="form-control text-center" name="searchbar" id="searchbar" type="text" placeholder="keywords..." autocomplete="off">
+            
+                    <div id="" class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                        
+                        <label class="btn btn-primary flex-fill active">
+                        <input type="radio" name="language" id="" autocomplete="off" value="en" checked=""> English
+                        </label>
+
+                        <label class="btn btn-primary flex-fill">
+                        <input type="radio" name="language" id="" autocomplete="off" value="es" > Spanish
+                        </label>
+
+                        <label class="btn btn-primary flex-fill">
+                        <input type="radio" name="language" id="" autocomplete="off" value="fr" > French
+                        </label>
+                        
+                        <label class="btn btn-primary flex-fill">
+                        <input type="radio" name="language" id="" autocomplete="off" value="de" > German
+                        </label>
+                        
+                    </div>
+                    
+                    <div id="" class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                        
+                        <label class="btn btn-primary flex-fill active">
+                        <input type="radio" name="sortBy" id="" autocomplete="off" value="publishedAt" checked=""> Date (newest first)
+                        </label>
+
+                        <label class="btn btn-primary flex-fill">
+                        <input type="radio" name="sortBy" id="" autocomplete="off" value="relevancy" > Revelancy
+                        </label>
+
+                        <label class="btn btn-primary flex-fill">
+                        <input type="radio" name="sortBy" id="" autocomplete="off" value="popularity" > Popularity
+                        </label>
+                        
+                    </div>
+                    
+                <!--</form>-->
+                    <button id="submit" onclick="submitSearch()" class="btn btn-danger btn-block">Go !</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+    
+    <div id="marker"></div>
+        
+    
+    
+    
+    
+    
+{% endblock %}

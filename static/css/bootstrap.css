@@ -2503,8 +2503,8 @@ textarea.form-control {
 
 .btn:focus, .btn.focus {
   outline: 0;
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.25);
-          box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.25);
+  /*-webkit-box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.25);*/
+          /*box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.25);*/
 }
 
 .btn.disabled, .btn:disabled {
@@ -2533,8 +2533,8 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary:focus, .btn-primary.focus {
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.5);
-          box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.5);
+  /*-webkit-box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.5);*/
+          /*box-shadow: 0 0 0 0.2rem rgba(26, 26, 26, 0.5);*/
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
@@ -2546,7 +2546,7 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #010000;
+  background-color: #1F9BCF;
   border-color: black;
 }
 
@@ -6589,7 +6589,7 @@ button.bg-dark:focus {
 }
 
 .rounded {
-  border-radius: 0 !important;
+  border-radius: 0.25rem !important;
 }
 
 .rounded-top {

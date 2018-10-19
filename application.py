@@ -22,15 +22,9 @@ def get_index():
     
     return render_template('index.html', tweets = tweets, articles = articles)
     
-# @app.route('/')
-# def get_results():
-    
-#     userSearch = request.args.get('userSearch')
-    
-#     articles  = get_news(API_NAME_2, API_KEY_2)
-#     tweets    = get_tweets(API_NAME_1, API_KEY_1) 
-    
-#     return render_template('results.html', tweets = tweets, articles = articles)
+@app.route('/spa')
+def get_spa():
+    return render_template('spa.html')
     
 # ------------------------------------------------------------------------------
 
