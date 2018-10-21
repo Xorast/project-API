@@ -2105,7 +2105,7 @@ textarea.form-control {
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  /*margin-bottom: 1rem;*/
 }
 
 .form-text {
@@ -2528,8 +2528,8 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #070707;
-  border-color: #010000;
+  background-color: #1f9bcf;
+  border-color: #1f9bcf;
 }
 
 .btn-primary:focus, .btn-primary.focus {

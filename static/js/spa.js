@@ -1,15 +1,32 @@
-// SPA JavaScript
+// SPA.js
+// Single Page Application written with JavaScript only (no framework)
 
-let apiKey = "1c05c9b62d574400aa12613d42c083b8";
 
-let request = new XMLHttpRequest();
+// NEWS ---------------
+let requestNews = new XMLHttpRequest();
 
-request.onreadystatechange = function () {
+let apiKeyNews = "1c05c9b62d574400aa12613d42c083b8";
+
+requestNews.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-     displayArticle(this.responseText);   
+             displayArticles(this.responseText);       
     }
 }
 
+
+// TWEETS ---------------
+let requestTweets = new XMLHttpRequest();
+
+let apiKeyTweets = "BJVr32yUrNipqBoA69TdUgrld3EYXLRA";
+
+requestTweets.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+             displayTweets(this.responseText);       
+    }
+}
+
+
+// NEWS ---------------
 function newArticle(i) {
     
     $("#marker").append(`
@@ -88,18 +105,18 @@ function writeArticle(i, article) {
     $("#article_" + i + "_url").text("READ FULL ARTICLE");
     // $("#article_" + i + "_url").text(article["url"]);
     $("#article_" + i + "_content").text(article["content"]);
-    $("#article_" + i + "_published_at").text(article["publishedAt"]);
+    $("#article_" + i + "_published_at").text(article["publishedAt"].substring(0, 10) + " " + article["publishedAt"].substring(11, 16));
     
 }
 
-function displayArticle(apiData) {
+function displayArticles(apiData) {
     
     $("#marker").empty();
     
-    let newsData = JSON.parse(apiData);
-    let articlesArray = newsData["articles"];
+    let newsData        = JSON.parse(apiData);
+    let articlesArray   = newsData["articles"];
     
-    for (i=0; i< articlesArray.length; i++) {
+    for (i=0; i < articlesArray.length; i++) {
         
         newArticle(i);
         writeArticle(i, articlesArray[i]);
@@ -114,41 +131,157 @@ function submitSearch() {
     let radioSortBy     = $("input[name='sortBy']:checked").val();
     let radioLanguage   = $("input[name='language']:checked").val();
     let yesterday       = new Date(Date.now() - 86400000); // 24 * 60 * 60 * 1000
-        yesterday       = yesterday.getFullYear() + '-' + (yesterday.getMonth() + 1) + '-' + yesterday.getDate() 
+    yesterday           = yesterday.getFullYear() + '-' + (yesterday.getMonth() + 1) + '-' + yesterday.getDate() 
     
-    request.open("GET", "https://newsapi.org/v2/everything?q=("  
+    requestNews.open("GET", "https://newsapi.org/v2/everything?q=("  
                                     + query + ")" 
                                     + "&from="     + yesterday
                                     + "&language=" + radioLanguage
                                     + "&sortBy="   + radioSortBy
-                                    + "&apiKey="   + apiKey
+                                    + "&apiKey="   + apiKeyNews
     );
-    
-    request.send();
-    
-    // request.onreadystatechange = function () {
-    //     if (this.readyState == 4 && this.status == 200) {
-    //         displayArticle(this.responseText);   
-    //     }
-    // }
+    requestNews.send();
     
 }
 
-// Link "Enter" key to button clic 
-$(document).ready(function() {
+// TWEETS ---------------
+function newTweet(i) {
     
-    $("#searchbar").keyup(function(event) {
-        if (event.keyCode === 13) { 
-            $("#submit").click();
-        }
-    });
+    $("#marker").append(`
+        <div class="row mt-3">
     
-});
+        <div class="col-md-3">
+            <img class="img-fluid rounded" id="tweet_`+ i + `_img" src="" alt="">
+        </div>
+        
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-3 text-uppercase">
+                    <strong>Tags</strong>
+                </div>
+                <div class="col-md-9" id="tweet_`+ i + `_tags">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-uppercase">
+                    <strong>Full Tweet</strong>
+                </div>
+                <div class="col-md-9" id="tweet_`+ i + `_full_tweet">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-uppercase">
+                    <strong>User</strong>
+                </div>
+                <div class="col-md-9" id="tweet_`+ i + `_user">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-3 text-uppercase">
+                    <strong>Created at</strong>
+                </div>
+                <div class="col-md-9" id="tweet_`+ i + `_created_at">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-uppercase">
+                    <strong>TWEET</strong>
+                </div>
+                <div class="col-md-9" id="">
+                    <a id="tweet_`+ i + `_url" href="" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    <hr>    
+                        
+                        
+    `)
+    
+}
 
+function writeTweet(i, tweet) {
+    
 
-// request.open("GET", "https://newsapi.org/v2/everything?q=(Cybersecurity OR infosec)&from=2018-10-16&language=en&sortBy=popularity&apiKey=1c05c9b62d574400aa12613d42c083b8");
+    console.log("******************")
+    console.log(i);
+    console.log(tweet);
+    
+    
+    $("#tweet_" + i + "_img").attr("src", tweet["user"]["profile_image_url_https"]);
+    $("#tweet_" + i + "_url").attr("href", "https://www.twitter.com/statuses/" + tweet["id_str"]);
+   
+   
+   
+    // Getting the tags
+    let hashtagsArray = [];
+    for (j = 0; j < tweet["entities"]["hashtags"].length ; j++) {
+        hashtagsArray.push(tweet["entities"]["hashtags"][j]["text"]);
+    };
+    if (hashtagsArray.length > 0) {
+        $("#tweet_" + i + "_tags").text( "#" + hashtagsArray.join(" #"));    
+    } else {
+        $("#tweet_" + i + "_tags").text("")
+    };
+    
+    
+    
+    
+    // Getting the full text. Tweet object structure changing. Look for the "full tweet" key in the object structure.
+    if ("retweeted_status" in tweet) {
+        console.log(tweet["retweeted_status"]["truncated"])
+        if (tweet["retweeted_status"]["truncated"]) {
+            $("#tweet_" + i + "_full_tweet").text(tweet["retweeted_status"]["extended_tweet"]["full_text"]);
+        } else {
+            $("#tweet_" + i + "_full_tweet").text(tweet["retweeted_status"]["text"]);
+        };
+    } else {
+        if ("extended_tweet" in tweet) {
+            $("#tweet_" + i + "_full_tweet").text(tweet["extended_tweet"]["full_text"]);
+        } else {
+             $("#tweet_" + i + "_full_tweet").text( tweet["text"]);
+        };
+    };
+    // Clean the "&amp;" to "&" in tweets
+    $("#tweet_" + i + "_full_tweet").text($("#tweet_" + i + "_full_tweet").text().replace("&amp;","&"))
+    
+    
+    
+    $("#tweet_" + i + "_user").text( tweet["user"]["name"]);
+    $("#tweet_" + i + "_url").text("GO TO TWEET");
+    $("#tweet_" + i + "_created_at").text( tweet["created_at"].substring(0, 16) + " (GMT) " + tweet["created_at"].substring(25, 30));
+    
+}
+
+function displayTweets(apiData) {
+    
+    $("#marker").empty();
+    
+    let tweetsArray  = JSON.parse(apiData);
+    
+    for (i=0; i < tweetsArray.length; i++) {
+        
+        newTweet(i);
+        writeTweet(i, tweetsArray[i]);
+        
+    }
+    
+}
+
+function getTweets() {
+    
+    let collection  = $("input[name='topic']:checked").val();
+    requestTweets.open("GET", "https://api.mlab.com/api/1/databases/github-tweets/collections/"
+                                    + collection 
+                                    + "?apiKey=" + apiKeyTweets);
+    requestTweets.send();
+    
+}
+
 // request.open("GET", "https://api.mlab.com/api/1/databases/github-tweets/collections/CyberSecurity?apiKey=BJVr32yUrNipqBoA69TdUgrld3EYXLRA");
 // request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=Dublin&APPID=6ebea87dfc131fd5402906ce4b098ab8");
-
-
-// request.send();

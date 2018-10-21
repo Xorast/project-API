@@ -26,6 +26,7 @@ class MyStreamListener(StreamListener):
                     db      = conn[MONGODB_NAME]
                     coll    = db[topic]
                     coll.insert(json.loads(data))
+                print("Tweet " + str(self.num_tweets) + "/" + str(limit) )
                 return True
             except BaseException as e:
                 print ("Failed on_data: %s" % str(e))
