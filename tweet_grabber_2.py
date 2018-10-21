@@ -6,7 +6,7 @@ from tweepy.streaming   import StreamListener
 from pymongo            import MongoClient
 
 topic           = "Full_Stack"
-keyword_list    = ["full","stack"]
+keyword_list    = ["frontend", "backend","fullstack"]
 limit           = 15
 
 MONGODB_URI     = os.environ.get("MONGODB_URI")
