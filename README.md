@@ -40,6 +40,17 @@ The "tweet_..." files are for the creation and update of the Mongo Database. The
 They are runned hourly by the host server add-on "Heroku Scheduler" to update the database.
 
 The files "get_data.py" and "mpa.html" are coming from the first version of this application (running on the server side) and are no longer required. They are kept for personal "archive".
+
+## TESTING
+
+The small size of the application enables to test it manually.
+This has been done (link, responsiveness,...) and no major failure has been detected.
+
+## SECURITY
+
+API Keys
+* Public keys are given to the client. Worst case scenario: too many requests leading to the provider stopping the service.
+* Private keys (enabling change in the database). Kept in the backend.
     
 ## AUTHOR(S)
 
