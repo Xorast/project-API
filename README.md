@@ -4,6 +4,10 @@ SPA using API to get news from online newspapers on user chosen topic and a cust
 
 [http://api.xavierastor.com](http://api.xavierastor.com)
 
+## AUTHOR(S)
+
+* Xorast
+
 ## OVERVIEW - WHAT IS THIS APPLICATION FOR ?
 
 This application is a personnal training to understand SPA structure and work with API. 
@@ -51,10 +55,19 @@ This has been done (link, responsiveness,...) and no major failure has been dete
 API Keys
 * Public keys are given to the client. Worst case scenario: too many requests leading to the provider stopping the service.
 * Private keys (enabling change in the database). Kept in the backend.
-    
-## AUTHOR(S)
 
-* Xorast
+## DEPLOYMENT
+
+To deploy this application, you'll need to :
+
+* Fork and deployed directly on Heroku, as it is.
+* Set your own newsapi account and register the keys your environment.
+* Set your own MongoDB (mLab) account and register the keys/URI into the environment.
+* Set your own twitter account and register the keys into the environment.
+* Run the "tweet_grabber" files to create the tweet database (otherwise no tweet won't be displayed).
+
+## WIREFRAME
+
 
 ## BUILT WITH
 ### LANGUAGES
