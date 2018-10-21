@@ -5,8 +5,8 @@ from tweepy             import Stream
 from tweepy.streaming   import StreamListener
 from pymongo            import MongoClient
 
-topic           = "CyberSecurity"
-keyword_list    = ["cybersecurity", "infosec"]
+topic           = "IoT"
+keyword_list    = ["IoT"]
 limit           = 15
 
 MONGODB_URI     = os.environ.get("MONGODB_URI")
@@ -24,7 +24,6 @@ def drop_collection():
         
     except BaseException as e:
         print ("Failed dropping: %s" % str(e))
-
 
 class MyStreamListener(StreamListener):
 
@@ -55,7 +54,6 @@ class MyStreamListener(StreamListener):
     def on_error(self, status):
         print(status)
         return True
-
 
 auth = get_auth()
 

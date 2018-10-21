@@ -178,7 +178,7 @@ function newTweet(i) {
                 <div class="col-md-9" id="tweet_`+ i + `_user">
                 </div>
             </div>
-            <div class="row mb-3">
+            <div class="row">
                 <div class="col-md-3 text-uppercase">
                     <strong>Created at</strong>
                 </div>
@@ -186,7 +186,7 @@ function newTweet(i) {
                     
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-md-3 text-uppercase">
                     <strong>TWEET</strong>
                 </div>
@@ -247,8 +247,9 @@ function writeTweet(i, tweet) {
              $("#tweet_" + i + "_full_tweet").text( tweet["text"]);
         };
     };
-    // Clean the "&amp;" to "&" in tweets
-    $("#tweet_" + i + "_full_tweet").text($("#tweet_" + i + "_full_tweet").text().replace("&amp;","&"))
+    // Clean the "amp;" (generated with special characters) in tweets
+    $("#tweet_" + i + "_full_tweet").text($("#tweet_" + i + "_full_tweet").text().replace("&amp;",";"))
+    $("#tweet_" + i + "_full_tweet").text($("#tweet_" + i + "_full_tweet").text().replace("&amp;amp;",""))
     
     
     
