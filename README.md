@@ -52,4 +52,4 @@ The following frameworks and librairies have been used:
 ## CREDITS
 * News API : [http://newsapi.org](https://newsapi.org)
 * Tweets: [Twitter.com](https://twitter.com)
-* Theme: [Bootswatch](https://bootswatch.com/) - Used theme [here](https://bootswatch.com/cyborg/)
+* Theme: [Bootswatch](https://bootswatch.com/) - Used theme [here](https://bootswatch.com/lux/)
