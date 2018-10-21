@@ -1,31 +1,30 @@
 import  os
 import  json
-
-from    flask       import Flask, render_template, request
-# from    get_data    import get_news, get_tweets
-
-
-API_KEY_1   = os.environ.get("API_KEY_1")
-API_NAME_1  = os.environ.get("API_NAME_1")
-
-API_KEY_2   = os.environ.get("API_KEY_2")
-API_NAME_2  = os.environ.get("API_NAME_2")
-
+from    flask   import Flask, render_template, request
 
 app = Flask(__name__)
 
 @app.route('/')
 def get_index():
-    return render_template('spa.html')
+    return render_template('index.html')
 
-# Former code : MPA - Replaced by SPA version
+
+
+# FORMER CODE - MPA - Replaced by SPA version
+
+# from    get_data    import get_news, get_tweets
+
+# API_KEY_1   = os.environ.get("API_KEY_1")
+# API_NAME_1  = os.environ.get("API_NAME_1")
+
+# API_KEY_2   = os.environ.get("API_KEY_2")
+# API_NAME_2  = os.environ.get("API_NAME_2")
+
 # @app.route('/')
 # def get_index()():
-    
 #     articles  = get_news(API_NAME_2, API_KEY_2)
 #     tweets    = get_tweets(API_NAME_1, API_KEY_1) 
-    
-#     return render_template('index.html', tweets = tweets, articles = articles)
+#     return render_template('mpa.html', tweets = tweets, articles = articles)
     
     
 # ------------------------------------------------------------------------------

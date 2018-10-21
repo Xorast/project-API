@@ -1,4 +1,5 @@
 // SPA.js
+// Code running on the client side
 // Single Page Application written with JavaScript only (no framework)
 
 
@@ -207,15 +208,14 @@ function newTweet(i) {
 
 function writeTweet(i, tweet) {
     
-
+    // Browser console
     console.log("******************")
     console.log(i);
     console.log(tweet);
     
-    
+    // Getting user profile picture & tweet url
     $("#tweet_" + i + "_img").attr("src", tweet["user"]["profile_image_url_https"]);
     $("#tweet_" + i + "_url").attr("href", "https://www.twitter.com/statuses/" + tweet["id_str"]);
-   
    
    
     // Getting the tags
@@ -228,8 +228,6 @@ function writeTweet(i, tweet) {
     } else {
         $("#tweet_" + i + "_tags").text("")
     };
-    
-    
     
     
     // Getting the full text. Tweet object structure changing. Look for the "full tweet" key in the object structure.
@@ -247,12 +245,13 @@ function writeTweet(i, tweet) {
              $("#tweet_" + i + "_full_tweet").text( tweet["text"]);
         };
     };
+    
     // Clean the "amp;" (generated with special characters) in tweets
     $("#tweet_" + i + "_full_tweet").text($("#tweet_" + i + "_full_tweet").text().replace("&amp;",";"))
     $("#tweet_" + i + "_full_tweet").text($("#tweet_" + i + "_full_tweet").text().replace("&amp;amp;",""))
     
     
-    
+    // Getting username and tweet creation date (GMT - NOT user time)
     $("#tweet_" + i + "_user").text( tweet["user"]["name"]);
     $("#tweet_" + i + "_url").text("GO TO TWEET");
     $("#tweet_" + i + "_created_at").text( tweet["created_at"].substring(0, 16) + " (GMT) " + tweet["created_at"].substring(25, 30));
@@ -270,7 +269,7 @@ function displayTweets(apiData) {
         newTweet(i);
         writeTweet(i, tweetsArray[i]);
         
-    }
+    };
     
 }
 
@@ -283,6 +282,3 @@ function getTweets() {
     requestTweets.send();
     
 }
-
-// request.open("GET", "https://api.mlab.com/api/1/databases/github-tweets/collections/CyberSecurity?apiKey=BJVr32yUrNipqBoA69TdUgrld3EYXLRA");
-// request.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=Dublin&APPID=6ebea87dfc131fd5402906ce4b098ab8");
