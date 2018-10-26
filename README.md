@@ -68,6 +68,8 @@ To deploy this application, you'll need to :
 
 ## WIREFRAME
 
+See pictures in the "wireframe" folder.
+The big pictures has been drawn to give the structure and then the details has been design as I coded the project.
 
 ## BUILT WITH
 ### LANGUAGES

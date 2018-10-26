@@ -50,8 +50,8 @@ $("#submitArticles").click(function () {
     },1500);
 });
 
-var time = 1539727284964;
-date = new Date(time)
+// var time = 1539727284964;
+// date = new Date(time)
 
-console.log(date.toString())
+// console.log(date.toString())
     
