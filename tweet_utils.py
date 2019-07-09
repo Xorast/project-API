@@ -1,7 +1,9 @@
 import os
 import json
+from tweepy import Stream
 from tweepy.streaming import StreamListener
 from pymongo import MongoClient
+from tweet_auth import get_auth
 
 
 MONGODB_URI = os.environ.get("MONGODB_URI")
@@ -55,3 +57,11 @@ class MyStreamListener(StreamListener):
     def on_error(status):
         print(status)
         return True
+
+
+def get_tweets(topic, keyword_list, limit):
+
+    auth = get_auth()
+    drop_collection(topic)
+    twitter_stream = Stream(auth, MyStreamListener(topic, limit))
+    twitter_stream.filter(track=keyword_list)
