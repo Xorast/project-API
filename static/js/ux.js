@@ -29,8 +29,8 @@ $("#wrapper").mouseenter(function () {
             $("#wrapper-2").removeClass("z-index-2");
         }, 1000)
     });
-   
-    
+
+
 // Scroll smoothly to element
 $("#submitTweets").click(function () {
     setTimeout( function () {
@@ -49,9 +49,3 @@ $("#submitArticles").click(function () {
         }, 2000);
     },1500);
 });
-
-// var time = 1539727284964;
-// date = new Date(time)
-
-// console.log(date.toString())
-    
